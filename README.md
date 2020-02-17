@@ -26,15 +26,26 @@ Output:
 5. Gradle 6.1
 
 ###Endpoint
+
 http://localhost:8080/
 
-| Path              | Method | Description                         | Response                     |
-|-------------------|--------|-------------------------------------|------------------------------|
-| /number_in_english/{number}  | GET    | get request to convert number into English        |
+| Path                     | Method | Description                                | Response                     |
+|--------------------------|--------|--------------------------------------------|------------------------------|
+| /num_in_english/{number} | GET    | get request to convert number into English | {"message": "processing request"}
 
-Status is reserved for messaging back if the process succeeded or failed. Make sure to use that when handling errors.
 
-Requirements:
-1. Treat this as a production endpoint you would publish.
-How would you organize it to be production ready? 
-What are the things you would do to allow other engineers to use your endpoint?
+###Local Tests:
+<br/>bin/zookeeper-server-start.sh config/zookeeper.properties &
+<br/>bin/kafka-server-start.sh config/server.properties &
+
+At project root, `gradle bootRun` to start the app
+
+
+**Deployment:**
+1. create dockerfile to dockerize the app
+2. create helm chart for kubernetes
+3. config kafka topic and partition
+
+**Utilizing endpoint**
+1. curl localhost:8080/num_in_english/any-given-number
+2. publish the result to kafka topic `num-in-english`

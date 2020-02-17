@@ -56,7 +56,7 @@ public class NumberToWordService {
     NumberInWord inWord = new NumberInWord();
     inWord.setNumString(numString);
 
-    if (isDigits(numString)) {
+    try {
       int number;
       Stack<String> result = new Stack<>();
       number = Integer.parseInt(numString);
@@ -79,9 +79,9 @@ public class NumberToWordService {
 
       inWord.setNumInEnglish(printNumber(result));
       return inWord;
-    } else {
+    } catch (Exception e) {
       inWord.setStatus("failed");
-      inWord.setNumInEnglish( "Invalid number");
+      inWord.setNumInEnglish( "Invalid number - " + e);
       return inWord;
     }
   }

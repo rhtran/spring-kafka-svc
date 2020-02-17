@@ -12,7 +12,7 @@ import org.springframework.web.context.request.async.DeferredResult;
 
 
 @RestController
-@RequestMapping(value = "/num_to_english")
+@RequestMapping(value = "/num_in_english")
 public class NumberToWordController {
     @Autowired
     private NumberToWordService numberToWordService;
@@ -23,10 +23,11 @@ public class NumberToWordController {
     @GetMapping(value = "/{number}", produces = MediaType.APPLICATION_JSON_VALUE)
     public DeferredResult<ResponseEntity<?>> getNumWords(@PathVariable String number) {
         DeferredResult<ResponseEntity<?>> deferredResult = new DeferredResult<>();
+        String response = "{\"message\": \"processing request\"}";
 
         NumberInWord result = numberToWordService.toWords(number);
         producerService.sendMessage(result);
-        deferredResult.setResult(ResponseEntity.ok(result));
+        deferredResult.setResult(ResponseEntity.ok(response));
 
         return deferredResult;
     }

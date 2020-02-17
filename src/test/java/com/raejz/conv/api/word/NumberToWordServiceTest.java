@@ -11,6 +11,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = AppConfig.class)
@@ -28,7 +29,7 @@ public class NumberToWordServiceTest {
 
   @Test
   public void testToWords() {
-    String[][] testCases = {{"Invalid number", "1l3444403"},
+    String[][] testCases = {
             {"zero", "0"}, {"one", "1"}, {"fourteen", "14"},
             {"twenty", "20"}, {"twenty one", "21"}, {"thirty two", "32"},
             {"two hundred two", "202"}, {"five hundred", "500"}, {"five thousand", "5000"},
@@ -38,6 +39,16 @@ public class NumberToWordServiceTest {
 
     for (int i = 0; i < testCases.length; i++) {
       assertEquals(testCases[i][0], numberToWordService.toWords(testCases[i][1]).getNumInEnglish());
+    }
+  }
+
+  @Test
+  public void testFailConversion() {
+    String[][] testCases = {{"Invalid number", "1l3444403"},
+            {"Invalid number", "134449070730508544403"}};
+
+    for (int i = 0; i < testCases.length; i++) {
+      assertTrue(numberToWordService.toWords(testCases[i][1]).getNumInEnglish().startsWith(testCases[i][0]));
     }
   }
 }
