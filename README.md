@@ -1,4 +1,4 @@
-###Goal
+### Goal
 Convert number into words in English
 
 **Example:**<br/>
@@ -25,7 +25,7 @@ Output:
 4. Junit 5.4.2
 5. Gradle 6.1
 
-###Endpoint
+### Endpoint
 
 http://localhost:8080/
 
@@ -34,7 +34,7 @@ http://localhost:8080/
 | /num_in_english/{number} | GET    | get request to convert number into English | {"message": "processing request"}
 
 
-###Local Tests:
+### Local Tests:
 <br/>bin/zookeeper-server-start.sh config/zookeeper.properties &
 <br/>bin/kafka-server-start.sh config/server.properties &
 
