@@ -48,7 +48,7 @@ At project root, `gradle bootRun` to start the app
 must create topics: `number-topic` and `num-in-english`
 
 **Utilizing endpoint**
-Two ways to publish message to process:
+<br/>Two ways to publish message to process:
 1. curl localhost:8080/num_in_english/any-given-number
 2. publish json message to topic `number-topic`
 
