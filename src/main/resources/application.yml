@@ -1,5 +1,6 @@
 spring:
   kafka:
+    receive-topic: number-topic
     topic: num-in-english
     consumer:
       bootstrap-servers: localhost:9092

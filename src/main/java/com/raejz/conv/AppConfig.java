@@ -1,5 +1,6 @@
 package com.raejz.conv;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -43,5 +44,10 @@ public class AppConfig {
     dict.put(90, "ninety");
 
     return dict;
+  }
+
+  @Bean
+  public ObjectMapper getObjectMapper() {
+   return new ObjectMapper();
   }
 }

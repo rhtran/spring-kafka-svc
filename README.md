@@ -45,7 +45,12 @@ At project root, `gradle bootRun` to start the app
 1. create dockerfile to dockerize the app
 2. create helm chart for kubernetes
 3. config kafka topic and partition
+must create topics: `number-topic` and `num-in-english`
 
 **Utilizing endpoint**
+Two ways to publish message to process:
 1. curl localhost:8080/num_in_english/any-given-number
-2. publish the result to kafka topic `num-in-english`
+2. publish json message to topic `number-topic`
+
+Output
+1. publish the result to topic `num-in-english`

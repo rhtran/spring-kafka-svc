@@ -13,7 +13,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProducerService {
     private static final Logger logger = LoggerFactory.getLogger(ProducerService.class);
-    private ObjectMapper objectMapper = new ObjectMapper();
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Value("${spring.kafka.topic}")
     private String topic;
